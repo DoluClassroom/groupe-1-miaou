@@ -4,7 +4,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  */
 
-package edu.umass.cs.iesl.sbtbase
+package com.davidsoergel.sbtbase
 
 import sbt._
 
@@ -15,23 +15,23 @@ import sbt._
 
 object Config {
 
-  val iesl = "edu.umass.cs.iesl"
+  val davidsoergel = "com.davidsoergel"
   val scalaV = "2.10.3"
 
   // any needed 3rd-party repositories should by proxied in Nexus and added to the public group, so their artifacts will be available here automatically.
   // Release and Snapshot repos are separated, to allow easily insuring that no snapshot dependencies exist (by default, in fact)
 
-  val nexusUrl = "http://dev-iesl.cs.umass.edu/nexus"
-  val nexusHttpsUrl = "https://dev-iesl.cs.umass.edu/nexus"
+  val nexusUrl = "http://dev.davidsoergel.com/nexus"
+  val nexusHttpsUrl = "https://dev.davidsoergel.com/nexus"
 
-  val IESLReleaseRepos = Seq(
-    "IESL Public Releases" at  nexusUrl + "/content/groups/public",
-    "IESL Private Releases" at nexusUrl + "/content/repositories/private-releases")
+  val DavidSoergelReleaseRepos = Seq(
+    "David Soergel Public Releases" at  nexusUrl + "/content/groups/public",
+    "David Soergel Private Releases" at nexusUrl + "/content/repositories/private-releases")
 
-  val IESLSnapshotRepos = Seq(
-    "IESL Public Snapshots" at nexusUrl + "/content/groups/public-snapshots",
-    "IESL Private Snapshots" at  nexusUrl + "content/repositories/private-snapshots")
+  val DavidSoergelSnapshotRepos = Seq(
+    "David Soergel Public Snapshots" at nexusUrl + "/content/groups/public-snapshots",
+    "David Soergel Private Snapshots" at  nexusUrl + "content/repositories/private-snapshots")
 
   val publishRealm: String = "Sonatype Nexus Repository Manager"
-  val publishHost: String = "dev-iesl.cs.umass.edu"
+  val publishHost: String = "dev.davidsoergel.com"
 }

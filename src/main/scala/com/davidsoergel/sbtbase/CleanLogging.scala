@@ -4,7 +4,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  */
 
-package edu.umass.cs.iesl.sbtbase
+package com.davidsoergel.sbtbase
 
 import sbt.Keys._
 
@@ -43,7 +43,7 @@ object CleanLogging {
 class CleanLogging(deps: Dependencies) {
 
   import deps._
-
+  
   def standardLogging(slf4jVersion:String="latest.release") = Seq(
     // see http://www.slf4j.org/legacy.html
 

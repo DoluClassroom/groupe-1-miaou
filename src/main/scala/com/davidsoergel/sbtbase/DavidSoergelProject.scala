@@ -4,7 +4,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  */
 
-package edu.umass.cs.iesl.sbtbase
+package com.davidsoergel.sbtbase
 
 import sbt._
 import sbt.Keys._
@@ -25,9 +25,9 @@ import xml.{Node => XNode, Text, Elem}
  * @version $Id$
  */
 
-object IeslProject {
+object DavidSoergelProject {
 
-  implicit def enrichProject(p: Project)(implicit allDeps: Dependencies): IeslProject = new IeslProject(p, allDeps)
+  implicit def enrichProject(p: Project)(implicit allDeps: Dependencies): DavidSoergelProject = new DavidSoergelProject(p, allDeps)
 
   sealed trait SnapshotsAllowedType
 
@@ -67,7 +67,7 @@ object IeslProject {
       Project(id, file(path)).ieslSetup(vers, deps, repotype, allowSnapshots,org,conflict)
   */
 
-  def publishToIesl(vers: String, repotype: RepoType) = publishTo := {
+  def publishToDavidSoergel(vers: String, repotype: RepoType) = publishTo := {
     def repo(name: String) = name at nexusHttpsUrl + "/content/repositories/" + name
     val isSnapshot = vers.endsWith("SNAPSHOT")
     val isPrivate = if (repotype == Private) "private-" else ""
@@ -326,22 +326,21 @@ object IeslProject {
 
 }
 
-class IeslProject(p: Project, allDeps: Dependencies) {
+class DavidSoergelProject(p: Project, allDeps: Dependencies) {
   def cleanLogging = p.settings(CleanLogging.cleanLogging)
 
   val standardLogging: Project = standardLogging("latest.release")
 
   def standardLogging(slf4jVersion: String = "latest.release"): Project = p.settings(libraryDependencies ++= new CleanLogging(allDeps).standardLogging(slf4jVersion))
 
-  import IeslProject._
+  import DavidSoergelProject._
 
-
-  def ieslSetup(
+  def davidSoergelSetup(
     vers: String,
     deps: Seq[ModuleID],
     repotype: RepoType,
     allowSnapshots: SnapshotsAllowedType = NoSnapshotDependencies,
-    org: String = iesl,
+    org: String = davidsoergel,
     conflict: ConflictStrategy = ConflictStrict,
     debugLevel: DebugLevel = DebugVars
   ): Project = {
@@ -349,7 +348,7 @@ class IeslProject(p: Project, allDeps: Dependencies) {
     val (localDeps: Seq[ProjectReference], remoteDeps: Seq[ModuleID]) = substituteLocalProjects(deps)
 
     val result = p.settings(scalaSettings(debugLevel): _*)
-      .settings(resolvers ++= ((if (allowSnapshots == WithSnapshotDependencies) IESLSnapshotRepos else Seq.empty) ++ IESLReleaseRepos))
+      .settings(resolvers ++= ((if (allowSnapshots == WithSnapshotDependencies) DavidSoergelSnapshotRepos else Seq.empty) ++ DavidSoergelReleaseRepos))
       .settings(getJarsTask)
       .settings(versionReportTask, versionUpdateReportTask, acceptVersionsTask, fixPom, allExternalDependencyClasspathTask) //, updateWithVersionReport)
       .settings(
@@ -357,7 +356,7 @@ class IeslProject(p: Project, allDeps: Dependencies) {
       version := vers,
       scalaVersion := scalaV,
       libraryDependencies ++= remoteDeps,
-      publishToIesl(vers, repotype),
+      publishToDavidSoergel(vers, repotype),
       creds)
       .settings(setConflictStrategy(conflict))
 

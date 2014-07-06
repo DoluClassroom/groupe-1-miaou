@@ -4,9 +4,9 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  */
 
+import com.davidsoergel.sbtbase.{Dependencies, DavidSoergelProject}
 import sbt._
-import edu.umass.cs.iesl.sbtbase.Dependencies
-import edu.umass.cs.iesl.sbtbase.IeslProject._
+import DavidSoergelProject._
 
 
 // this is just an example, to show how simple a build can be once all the boilerplate stuff is factored out.
@@ -20,7 +20,7 @@ object FooBarBuild extends Build {
   import allDeps._
 
   val deps = Seq(
-    ieslScalaCommons("latest.integration"),
+    davidSoergelScalaCommons("latest.integration"),
     scalaCompiler(),
     scalatest(),
     specs2(),
@@ -28,6 +28,6 @@ object FooBarBuild extends Build {
     scalaIoFile(),
     jdom("1.1.3"))
 
-  lazy val scalacommons = Project("foobar", file(".")).ieslSetup(vers, deps, Public, WithSnapshotDependencies).cleanLogging.standardLogging
+  lazy val scalacommons = Project("foobar", file(".")).davidSoergelSetup(vers, deps, Public, WithSnapshotDependencies).cleanLogging.standardLogging
 
 }

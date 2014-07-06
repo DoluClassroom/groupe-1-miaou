@@ -4,8 +4,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  */
 
-package edu.umass.cs.iesl.sbtbase
-
+package com.davidsoergel.sbtbase
 import sbt._
 import Keys._
 

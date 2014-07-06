@@ -17,7 +17,7 @@ This is a complete, functional Build.scala using iesl-sbt-base:
 
     import sbt._
     import edu.umass.cs.iesl.sbtbase.{Dependencies, IeslProject}
-    import edu.umass.cs.iesl.sbtbase.IeslProject._
+    import com.davidsoergel.sbtbase.IeslProject._
 
     object FooBarBuild extends Build {
       implicit val allDeps: Dependencies = new Dependencies()

@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2013  University of Massachusetts Amherst
+ * Copyright (c) 2013  David Soergel  <dev@davidsoergel.com>
  * Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  */
 
-package edu.umass.cs.iesl.sbtbase
+package com.davidsoergel.sbtbase
 
 import sbt._
 import sbt.Keys._
@@ -13,6 +13,7 @@ import io.{BufferedSource, Source}
 import java.io.{IOException, FileWriter, BufferedWriter}
 import xml.transform.{RewriteRule, RuleTransformer}
 import xml.{Node => XNode, Elem}
+
 
 /**
  * @author <a href="mailto:dev@davidsoergel.com">David Soergel</a>

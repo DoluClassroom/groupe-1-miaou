@@ -8,15 +8,15 @@ import sbt._
 import sbt.Keys._
 
 
-object IeslPluginLoader extends Build {
+object DavidSoergelPluginLoader extends Build {
 
   // automatically updating SNAPSHOTs does not seem to work right here.
   // as a workaround, we'll just release every incremental change to iesl-sbt-base with integer build numbers.
 
   lazy val root = Project(id = "plugins", base = file("."))
-    .settings(resolvers += "IESL Public Releases" at "https://dev-iesl.cs.umass.edu/nexus/content/groups/public")
+    .settings(resolvers += "David Soergel Public Releases" at "http://dev.davidsoergel.com/nexus/content/groups/public")
     //.settings(resolvers += "IESL Public Snapshots" at "https://dev-iesl.cs.umass.edu/nexus/content/groups/public-snapshots")
-    .settings(addSbtPlugin("edu.umass.cs.iesl" %% "iesl-sbt-base" % "latest.release")) // apparently buggy: "latest.integration" changing()
+    .settings(addSbtPlugin("com.davidsoergel" %% "davidsoergel-sbt-base" % "latest.release")) // apparently buggy: "latest.integration" changing()
 }
 
 
