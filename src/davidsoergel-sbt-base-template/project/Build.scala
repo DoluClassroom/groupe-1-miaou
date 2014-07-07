@@ -20,7 +20,7 @@ object FooBarBuild extends Build {
   import allDeps._
 
   val deps = Seq(
-    davidSoergelScalaCommons("latest.integration"),
+    ieslScalaCommons("latest.integration"),
     scalaCompiler(),
     scalatest(),
     specs2(),
