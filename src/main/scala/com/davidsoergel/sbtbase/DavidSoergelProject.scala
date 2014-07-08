@@ -68,7 +68,7 @@ object DavidSoergelProject {
   */
 
   def publishToDavidSoergel(vers: String, repotype: RepoType) = publishTo := {
-    def repo(name: String) = name at nexusHttpsUrl + "/content/repositories/" + name
+    def repo(name: String) = name at nexusHttpUrl + "/content/repositories/" + name
     val isSnapshot = vers.endsWith("SNAPSHOT")
     val isPrivate = if (repotype == Private) "private-" else ""
     val repoName = isPrivate + (if (isSnapshot) "snapshots" else "releases")
