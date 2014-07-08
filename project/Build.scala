@@ -36,7 +36,7 @@ object DavidSoergelSbtBaseBuild extends Build {
       creds).settings(packageTemplateTask.settings: _*).settings(templateArtifact.settings: _*)
 
   def publishToDavidSoergel(vers: String) = publishTo := {
-    def repo(name: String) = name at "https://dev.davidsoergel.com/nexus/content/repositories/" + name
+    def repo(name: String) = name at "http://dev.davidsoergel.com/nexus/content/repositories/" + name
     val isSnapshot = vers.endsWith("SNAPSHOT")
     val repoName = (if (isSnapshot) "snapshots" else "releases")
     Some(repo(repoName))
