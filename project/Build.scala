@@ -5,8 +5,8 @@ import java.io.File
 object DavidSoergelSbtBaseBuild extends Build {
 
   val davidsoergel = "com.davidsoergel"
-  val scalaV = "2.10.4"
-  val vers = "79-ds"
+  val scalaV = "2.11.6"
+  val vers = "80-ds"
 
   val packageTemplate = TaskKey[File]("package-template")
 
@@ -38,7 +38,7 @@ object DavidSoergelSbtBaseBuild extends Build {
   def publishToDavidSoergel(vers: String) = publishTo := {
     def repo(name: String) = name at "http://dev.davidsoergel.com/nexus/content/repositories/" + name
     val isSnapshot = vers.endsWith("SNAPSHOT")
-    val repoName = (if (isSnapshot) "snapshots" else "releases")
+    val repoName = if (isSnapshot) "snapshots" else "releases"
     Some(repo(repoName))
   }
 
