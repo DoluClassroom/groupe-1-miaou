@@ -5,8 +5,8 @@ import java.io.File
 object DavidSoergelSbtBaseBuild extends Build {
 
   val davidsoergel = "com.davidsoergel"
-  val scalaV = "2.11.6"
-  val vers = "80-ds"
+  val scalaV = "2.10.5"
+  val vers = "80"
 
   val packageTemplate = TaskKey[File]("package-template")
 
